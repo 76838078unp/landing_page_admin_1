@@ -1,0 +1,21 @@
+<p-table [value]="personas" 
+[tableStyle]="{ 'min-width': '50rem' }"
+selectionMode="single" 
+(onRowSelect)="onSelect($event)"
+
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>DNI</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-persona >
+        <tr  [pSelectableRow]="persona" >
+            <td>{{ persona.dni }}</td>
+            <td>{{ persona.nombres }}</td>
+            <td>{{ persona.apellidos }}</td>
+        </tr>
+    </ng-template>
+</p-table>

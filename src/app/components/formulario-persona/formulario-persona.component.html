@@ -1,0 +1,24 @@
+<form class="item" [formGroup]="form">
+  <p-floatLabel class="m-2">
+    <input pInputText id="nombres"  formControlName="nombres" />
+    <label for="nombres">Nombres</label>
+  </p-floatLabel>
+  <p-floatLabel class="m-2">
+    <input pInputText id="apellidos" formControlName="apellidos" />
+    <label for="apellidos">Apellidos</label>
+  </p-floatLabel>
+  <p-floatLabel class="m-2">
+    <input pInputText id="dni" formControlName="dni" type="number"/>
+    <label for="dni">DNI</label>
+  </p-floatLabel>
+  <hr>
+  <p-button label="Nuevo"  class="m-2" icon="pi pi-check"  severity="secondary"
+    type="button" [disabled]="!isNew" (click)="agregarPersona()"  />
+  <p-button label="Guardar"  class="m-2" icon="pi pi-plus" 
+    type="submit" (click)="actualizar()" [disabled]="!isSave" />
+
+  <p-button label="Eliminar"  class="m-2" icon="pi pi-trash"  severity="danger"
+    type="button" [disabled]="!isDelete" (click)="onEliminar()" />
+  <p-button label="Cancelar"  class="m-2" icon="pi pi-times"  severity="warning"
+    type="button" [disabled]="!isCancel" (click)="onCancelar()"  />
+</form>
