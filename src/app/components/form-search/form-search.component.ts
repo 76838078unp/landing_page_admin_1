@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -21,5 +21,10 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './form-search.component.css'
 })
 export class FormSearchComponent {
-
+  form: FormGroup;
+  constructor() {
+    this.form = new FormGroup({
+      
+    });
+  }
 }

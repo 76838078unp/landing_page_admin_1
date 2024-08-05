@@ -1,16 +1,16 @@
-<form action="">
+<form [formGroup]="form">
     <div class="card flex flex-column md:flex-row gap-3">
         <p-floatLabel>
-            <input pInputText id="nombres" />
-            <label for="nombres">Nombres</label>
+            <input pInputText id="nombres_edit" />
+            <label for="nombres_edit">Nombres</label>
         </p-floatLabel>
         <p-floatLabel>
-            <input pInputText id="apellidos" />
-            <label for="apellidos">Apellidos</label>
+            <input pInputText id="apellidos_edit" />
+            <label for="apellidos_edit">Apellidos</label>
         </p-floatLabel>
         <p-floatLabel>
-            <input pInputText id="dni" />
-            <label for="dni">DNI</label>
+            <input pInputText id="dni_edit" />
+            <label for="dni_edit">DNI</label>
         </p-floatLabel>
 
         <p-button label="Buscar" icon="pi pi-search" />

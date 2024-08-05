@@ -38,12 +38,18 @@ export class FormularioPersonaComponent {
       this.isSave = true;
       this.isDelete = true;
       this.isCancel = true;
-      this.personaEditar = this.personaService.listadoPersonas.find((persona) => persona.id == id) || new Persona("","","");
+
+      this.personaEditar = personaService.listado.find((p) => p.id == id);
+      if(!this.personaEditar){
+        alert('No se encontró la persona');
+        return;
+      }
       this.form.setValue({
         nombres: this.personaEditar.nombres||'',
         apellidos: this.personaEditar.apellidos||'',
         dni: this.personaEditar.dni||''
       });
+      
     });
   }
 
@@ -96,6 +102,6 @@ export class FormularioPersonaComponent {
     this.isNew = true;
     this.isSave = false;
     this.isDelete = false;
-    this.isCancel = false;
+    this.isCancel = true;
   }
 }

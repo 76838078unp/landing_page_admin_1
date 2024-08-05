@@ -5,21 +5,23 @@ import { Persona } from '../models/persona';
   providedIn: 'root'
 })
 export class PersonaService {
-  listadoPersonas: Persona[] = [
-  ];
   personaEditId = new EventEmitter<number>();
-  constructor() { }
-
-  agregarPersona(persona: Persona){
-    this.listadoPersonas.push(persona);
+  listadoPersonas = new EventEmitter<Persona[]>();
+  listado:Persona[] = [];
+  listaFilter:Persona[] = [];
+  constructor() {
+    this.listadoPersonas.emit(this.listado);
   }
 
-  listarPersonas(){
-    return this.listadoPersonas;
+  agregarPersona(persona: Persona){
+    this.listado = [...this.listado, persona];
+    this.listadoPersonas.emit(this.listado);
   }
 
   eliminarPersona(id: number){
-    this.listadoPersonas = this.listadoPersonas.filter((persona) => persona.id != id);
+    
+    this.listado = this.listado.filter((p) => p.id != id);
+    this.listadoPersonas.emit(this.listado);
   }
 
   editarPersona(id:number){
@@ -27,11 +29,27 @@ export class PersonaService {
   }
 
   actualizarPersona(id: number, persona: Persona){
-    this.listadoPersonas = this.listadoPersonas.map((p) => {
+    this.listado = this.listado.map((p) => {
       if(p.id == id){
         return persona;
       }
       return p;
     });
+    this.listadoPersonas.emit(this.listado);
+  }
+
+  searchPersona(persona: Persona){
+    let newLista = this.listado;
+    if(persona.nombres){
+      newLista = newLista.filter((p) => p.nombres.includes(persona.nombres));
+    }
+    if(persona.apellidos){
+      newLista = newLista.filter((p) => p.apellidos.includes(persona.apellidos));
+    }
+    if(persona.dni){
+      newLista = newLista.filter((p) => p.dni.includes(persona.dni));
+    }
+    this.listaFilter = newLista;
+    this.listadoPersonas.emit(this.listaFilter);
   }
 }
